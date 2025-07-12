@@ -1,0 +1,14 @@
+
+---
+
+##  `requirements.txt`
+
+```txt
+os
+pickle
+openai
+python-dotenv
+sentence-transformers
+faiss-cpu
+textblob
+numpy
