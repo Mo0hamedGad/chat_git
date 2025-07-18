@@ -135,7 +135,7 @@ def is_small_talk(query):
             "response": "I'm a health assistant chatbot designed to help with medical questions."
         },
         "what_can_you_do": {
-            "keywords": ["what can you do", "how can you help", "help me"],
+            "keywords": ["what can you do"],
             "response": "I can answer questions about conditions like anemia, infections, injuries, and autoimmune diseases."
         },
         "affirmation": {
