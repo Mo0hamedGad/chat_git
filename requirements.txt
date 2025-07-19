@@ -2,6 +2,7 @@ openai==0.28.0
 python-dotenv
 sentence-transformers
 uvicorn==0.23.2
+fastapi
 faiss-cpu
 textblob
 numpy
