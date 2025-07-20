@@ -57,16 +57,30 @@ def correct_spelling(text):
     return str(blob.correct())
 
 # === Get top matching chunks ===
+# def get_top_chunks(query, model, index, text_chunks, top_k=5, threshold=2.1):
+#     query_embedding = model.encode([query])
+#     distances, indices = index.search(np.array(query_embedding), top_k)
+    
+#     # Normalize distances for cosine-like scores (0 = perfect match)
+#     max_dist = max(distances[0])
+#     if max_dist > threshold:
+#         return None  # No good match found
+    
+#     return [text_chunks[i] for i in indices[0]]
+
 def get_top_chunks(query, model, index, text_chunks, top_k=5, threshold=2.1):
-    query_embedding = model.encode([query])
-    distances, indices = index.search(np.array(query_embedding), top_k)
-    
-    # Normalize distances for cosine-like scores (0 = perfect match)
-    max_dist = max(distances[0])
-    if max_dist > threshold:
-        return None  # No good match found
-    
-    return [text_chunks[i] for i in indices[0]]
+    print("Entered get_top_chunks")
+    try:
+        import numpy as np
+        print("NumPy version:", np.__version__)
+        query_embedding = model.encode([query])
+        print("Query embedding:", query_embedding)
+        distances, indices = index.search(np.array(query_embedding), top_k)
+        print("Distances:", distances)
+        print("Indices:", indices)
+    except Exception as e:
+        print("Error in get_top_chunks:", str(e))
+        return None
 
 # === Generate answer with OpenAI ===
 def generate_answer(query, top_chunks, chat_history):

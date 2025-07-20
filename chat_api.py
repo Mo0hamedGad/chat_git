@@ -51,6 +51,21 @@ async def delete_session(session_id: str):
     else:
         raise HTTPException(status_code=404, detail="Session not found")
 
+@app.get("/debug-numpy")
+def debug_numpy():
+    try:
+        import numpy as np
+        return {
+            "status": "success",
+            "version": np.__version__,
+            "test_array": np.array([1, 2, 3]).tolist()
+        }
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": str(e)
+        }
+
 @app.get("/ping")
 async def ping():
     return {"status": "ok"}
